@@ -1264,3 +1264,31 @@ func (tree *MutableTree) GetIAVLNodeFastCacheMissCnt() uint64 {
 	}
 	return tree.ndb.opts.Stat.GetFastCacheMissCnt()
 }
+
+func (tree *MutableTree) GetIAVLNodeCacheLen() uint64 {
+	if tree.ndb.nodeCache == nil {
+		return 0
+	}
+	return uint64(tree.ndb.nodeCache.Len())
+}
+
+func (tree *MutableTree) GetIAVLNodeCacheCapacity() uint64 {
+	if tree.ndb.nodeCache == nil {
+		return 0
+	}
+	return uint64(tree.ndb.nodeCache.Capacity())
+}
+
+func (tree *MutableTree) GetIAVLNodeFastCacheLen() uint64 {
+	if tree.ndb.fastNodeCache == nil {
+		return 0
+	}
+	return uint64(tree.ndb.fastNodeCache.Len())
+}
+
+func (tree *MutableTree) GetIAVLNodeFastCacheCapacity() uint64 {
+	if tree.ndb.fastNodeCache == nil {
+		return 0
+	}
+	return uint64(tree.ndb.fastNodeCache.Capacity())
+}
