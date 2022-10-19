@@ -32,6 +32,9 @@ type Cache interface {
 
 	// Len returns the cache length.
 	Len() int
+
+	// Len returns the cache capacity.
+	Capacity() int
 }
 
 // lruCache is an LRU cache implementation.
@@ -94,6 +97,10 @@ func (c *lruCache) Has(key []byte) bool {
 
 func (nc *lruCache) Len() int {
 	return nc.ll.Len()
+}
+
+func (nc *lruCache) Capacity() int {
+	return nc.maxElementCount
 }
 
 func (c *lruCache) Remove(key []byte) Node {
